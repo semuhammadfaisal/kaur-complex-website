@@ -199,7 +199,7 @@ function initGallery() {
         if (e.key === 'ArrowRight') navigateImage(1);
     });
 
-    // Filter functionality
+    // Filter functionality (no IntersectionObserver, just show/hide)
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -300,61 +300,103 @@ function initAnimations() {
     }, { threshold: 0.1 }).observe(document.querySelectorAll('section'));
 }
 
-// Testimonial Slider
 function initTestimonialSlider() {
-    const track = document.querySelector('.testimonial-track');
-    if (!track) return;
-    
-    const slides = document.querySelectorAll('.testimonial-card'); // Changed from .testimonial-slide
-    const dotsContainer = document.querySelector('.testimonial-dots'); // Changed from .slider-dots
-    let currentIndex = 0;
+    const slider = document.querySelector('.testimonial-slider');
+    if (!slider) return;
 
+    const track = slider.querySelector('.testimonial-track');
+    const slides = slider.querySelectorAll('.testimonial-slide');
+    const dotsContainer = slider.querySelector('.slider-dots');
+    const prevBtn = slider.querySelector('.prev-btn');
+    const nextBtn = slider.querySelector('.next-btn');
+
+    if (!track || !slides.length || !dotsContainer || !prevBtn || !nextBtn) return;
+
+    let currentIndex = 0;
+    const slideCount = slides.length;
+
+    // Calculate slide width based on actual content
+    function calculateSlideWidth() {
+        return slides[0].offsetWidth + 40; // Include padding
+    }
+
+    // Create dots
     slides.forEach((_, index) => {
         const dot = document.createElement('span');
-        dot.className = `dot ${index === 0 ? 'active' : ''}`;
-        dot.dataset.index = index;
+        dot.className = 'dot';
+        if (index === 0) dot.classList.add('active');
         dot.addEventListener('click', () => goToSlide(index));
         dotsContainer.appendChild(dot);
     });
 
-    const dots = document.querySelectorAll('.dot');
-    const getSlideWidth = () => slides[0].offsetWidth;
+    const dots = dotsContainer.querySelectorAll('.dot');
 
     function updateSlider() {
-        track.style.transform = `translateX(-${currentIndex * getSlideWidth()}px)`;
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
-        document.querySelector('.nav-btn.prev-btn').disabled = currentIndex === 0;
-        document.querySelector('.nav-btn.next-btn').disabled = currentIndex === slides.length - 1;
+        const slideWidth = calculateSlideWidth();
+        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        updateActiveDot();
+        updateButtonStates();
+    }
+
+    function updateActiveDot() {
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    function updateButtonStates() {
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === slideCount - 1;
     }
 
     function goToSlide(index) {
+        if (index < 0 || index >= slideCount) return;
         currentIndex = index;
         updateSlider();
     }
 
     function nextSlide() {
-        if (currentIndex < slides.length - 1) goToSlide(currentIndex + 1);
+        if (currentIndex < slideCount - 1) {
+            currentIndex++;
+        } else {
+            currentIndex = 0;
+        }
+        updateSlider();
     }
 
     function prevSlide() {
-        if (currentIndex > 0) goToSlide(currentIndex - 1);
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = slideCount - 1;
+        }
+        updateSlider();
     }
 
-    document.querySelector('.nav-btn.prev-btn').addEventListener('click', prevSlide);
-    document.querySelector('.nav-btn.next-btn').addEventListener('click', nextSlide);
+    // Event listeners
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+    
+    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowRight') nextSlide();
         if (e.key === 'ArrowLeft') prevSlide();
     });
 
-    let autoplay = setInterval(nextSlide, 5000);
-    const container = document.querySelector('.testimonials-section');
-    container?.addEventListener('mouseenter', () => clearInterval(autoplay));
-    container?.addEventListener('mouseleave', () => autoplay = setInterval(nextSlide, 5000));
-
-    window.addEventListener('resize', () => setTimeout(updateSlider, 100));
+    // Initialize
     updateSlider();
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        track.style.transition = 'none';
+        updateSlider();
+        setTimeout(() => {
+            track.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+        }, 10);
+    });
 }
+
+document.addEventListener('DOMContentLoaded', initTestimonialSlider);
 
 // Smooth Scrolling
 function initSmoothScrolling() {

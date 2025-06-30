@@ -516,8 +516,8 @@
         <!-- Gallery Grid -->
         <div class="gallery-grid">
             <!-- Large Featured Item -->
-            <div class="gallery-item large">
-                <img src="assets/images/gallery/exterior-1.jpg" alt="Kaur Complex Exterior">
+            <div class="gallery-item large" data-category="exterior">
+                <img src="assets/images/gallery/exterior-1.jpg" alt="Kaur Complex Exterior" loading="lazy">
                 <div class="gallery-overlay">
                     <div class="overlay-content">
                         <h4>Grand Entrance</h4>
@@ -530,8 +530,8 @@
             </div>
             
             <!-- Regular Items -->
-            <div class="gallery-item">
-                <img src="assets/images/gallery/lobby-1.jpg" alt="Luxury Lobby">
+            <div class="gallery-item" data-category="interior">
+                <img src="assets/images/gallery/lobby-1.jpg" alt="Luxury Lobby" loading="lazy">
                 <div class="gallery-overlay">
                     <div class="overlay-content">
                         <h4>Elegant Lobby</h4>
@@ -543,8 +543,8 @@
                 </div>
             </div>
             
-            <div class="gallery-item">
-                <img src="assets/images/gallery/apartment-1.jpg" alt="Luxury Apartment">
+            <div class="gallery-item" data-category="interior">
+                <img src="assets/images/gallery/apartment-1.jpg" alt="Luxury Apartment" loading="lazy">
                 <div class="gallery-overlay">
                     <div class="overlay-content">
                         <h4>Modern Interiors</h4>
@@ -556,8 +556,8 @@
                 </div>
             </div>
             
-            <div class="gallery-item">
-                <img src="assets/images/gallery/amenity-1.jpg" alt="Swimming Pool">
+            <div class="gallery-item" data-category="amenities">
+                <img src="assets/images/gallery/amenity-1.jpg" alt="Swimming Pool" loading="lazy">
                 <div class="gallery-overlay">
                     <div class="overlay-content">
                         <h4>Resort Pool</h4>
@@ -569,8 +569,8 @@
                 </div>
             </div>
             
-            <div class="gallery-item">
-                <img src="assets/images/gallery/penthouse-1.jpg" alt="Penthouse View">
+            <div class="gallery-item" data-category="views">
+                <img src="assets/images/gallery/penthouse-1.jpg" alt="Penthouse View" loading="lazy">
                 <div class="gallery-overlay">
                     <div class="overlay-content">
                         <h4>Penthouse View</h4>
@@ -581,24 +581,25 @@
                     </div>
                 </div>
             </div>
-    </div>
-    
-    <!-- Lightbox Modal -->
-    <div class="lightbox-modal">
-        <div class="lightbox-content">
-            <span class="close-btn">&times;</span>
-            <img class="lightbox-image" src="" alt="">
-            <div class="lightbox-caption">
-                <h4 class="image-title"></h4>
-                <p class="image-description"></p>
+        </div>
+        
+        <!-- Lightbox Modal -->
+        <div class="lightbox-modal">
+            <div class="lightbox-content">
+                <span class="close-btn">&times;</span>
+                <img class="lightbox-image" src="" alt="">
+                <div class="lightbox-caption">
+                    <h4 class="image-title"></h4>
+                    <p class="image-description"></p>
+                </div>
+                <button class="lightbox-nav prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="lightbox-nav next-btn"><i class="fas fa-chevron-right"></i></button>
             </div>
-            <button class="lightbox-nav prev-btn"><i class="fas fa-chevron-left"></i></button>
-            <button class="lightbox-nav next-btn"><i class="fas fa-chevron-right"></i></button>
         </div>
     </div>
 </section>
 
-    <!-- Testimonials Section -->
+<!-- Testimonials Section -->
 <section class="testimonials-section">
     <div class="container">
         <div class="section-header center">
@@ -607,83 +608,97 @@
             <p class="section-description">Discover why our residents love calling Kaur Complex home</p>
         </div>
         
-        <div class="testimonials-container">
-            <div class="testimonial-track">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-badge">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <div class="testimonial-content">
-                        <p class="testimonial-text">"Moving to Kaur Complex was the best decision we made. The quality of construction, amenities, and security are unmatched in Peshawar. It truly feels like a luxury resort every day."</p>
-                        <div class="testimonial-author">
-                            <div class="author-image">
-                                <img src="assets/images/gallery/ahmad.jpg" alt="Ahmed Khan" loading="lazy">
-                                <div class="image-border"></div>
+        <div class="testimonial-slider">
+            <div class="testimonial-track-container">
+                <div class="testimonial-track">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-badge">
+                                <i class="fas fa-quote-left"></i>
                             </div>
-                            <div class="author-details">
-                                <h5>Ahmed Khan</h5>
-                                <span>Resident since 2022</span>
-                                <div class="testimonial-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
+                            <div class="testimonial-content">
+                                <div class="testimonial-text-wrapper">
+                                    <p class="testimonial-text">"Moving to Kaur Complex was the best decision we made. The quality of construction, amenities, and security are unmatched in Peshawar. It truly feels like a luxury resort every day."</p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="author-image">
+                                        <img src="assets/images/gallery/ahmad.jpg" alt="Ahmed Khan" loading="lazy">
+                                        <div class="image-border"></div>
+                                    </div>
+                                    <div class="author-details">
+                                        <h5>Ahmed Khan</h5>
+                                        <span>Resident since 2022</span>
+                                        <div class="testimonial-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-badge">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <div class="testimonial-content">
-                        <p class="testimonial-text">"As an investor, I've seen my property value increase significantly since purchasing at Kaur Complex. The management team is professional and responsive, making it a worry-free investment."</p>
-                        <div class="testimonial-author">
-                            <div class="author-image">
-                                <img src="assets/images/gallery/fatima.jpg" alt="Fatima Ali" loading="lazy">
-                                <div class="image-border"></div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-badge">
+                                <i class="fas fa-quote-left"></i>
                             </div>
-                            <div class="author-details">
-                                <h5>Fatima Ali</h5>
-                                <span>Investor & Resident</span>
-                                <div class="testimonial-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
+                            <div class="testimonial-content">
+                                <div class="testimonial-text-wrapper">
+                                    <p class="testimonial-text">"As an investor, I've seen my property value increase significantly since purchasing at Kaur Complex. The management team is professional and responsive, making it a worry-free investment."</p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="author-image">
+                                        <img src="assets/images/gallery/fatima.jpg" alt="Fatima Ali" loading="lazy">
+                                        <div class="image-border"></div>
+                                    </div>
+                                    <div class="author-details">
+                                        <h5>Fatima Ali</h5>
+                                        <span>Investor & Resident</span>
+                                        <div class="testimonial-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-badge">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <div class="testimonial-content">
-                        <p class="testimonial-text">"The amenities at Kaur Complex are exceptional. My children love the playground and pool, while my wife and I enjoy the gym and social events. It's a complete lifestyle package."</p>
-                        <div class="testimonial-author">
-                            <div class="author-image">
-                                <img src="assets/images/gallery/zahid.jpg" alt="Zahid Mahmood" loading="lazy">
-                                <div class="image-border"></div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-badge">
+                                <i class="fas fa-quote-left"></i>
                             </div>
-                            <div class="author-details">
-                                <h5>Zahid Mahmood</h5>
-                                <span>Family Resident</span>
-                                <div class="testimonial-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
+                            <div class="testimonial-content">
+                                <div class="testimonial-text-wrapper">
+                                    <p class="testimonial-text">"The amenities at Kaur Complex are exceptional. My children love the playground and pool, while my wife and I enjoy the gym and social events. It's a complete lifestyle package."</p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="author-image">
+                                        <img src="assets/images/gallery/zahid.jpg" alt="Zahid Mahmood" loading="lazy">
+                                        <div class="image-border"></div>
+                                    </div>
+                                    <div class="author-details">
+                                        <h5>Zahid Mahmood</h5>
+                                        <span>Family Resident</span>
+                                        <div class="testimonial-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -691,12 +706,12 @@
                 </div>
             </div>
             
-            <div class="testimonial-nav">
-                <button class="nav-btn prev-btn" aria-label="Previous testimonial">
+            <div class="slider-controls">
+                <button class="slider-btn prev-btn" aria-label="Previous testimonial">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <div class="testimonial-dots"></div>
-                <button class="nav-btn next-btn" aria-label="Next testimonial">
+                <div class="slider-dots"></div>
+                <button class="slider-btn next-btn" aria-label="Next testimonial">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
